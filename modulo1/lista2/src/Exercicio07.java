@@ -4,7 +4,7 @@ public class Exercicio07 {
     public static void main(String[] args){
 
         int[][] numeros = new int[4][4];
-        int contador = 0;
+        int contMaiorQueDez = 0;
 
         Scanner sc = new Scanner(System.in);
 
@@ -12,6 +12,9 @@ public class Exercicio07 {
             for (int j = 0; j < numeros.length; j++){
                 System.out.printf("Digite um número para linha [%d] coluna [%d] : ", i+1, j+1);
                 numeros[i][j] = sc.nextInt();
+                if(numeros[i][j] > 10){
+                    contMaiorQueDez++;
+                }
             }
         }
 
@@ -19,14 +22,11 @@ public class Exercicio07 {
         for(int i = 0; i < numeros.length; i++){
             for (int j = 0; j < numeros.length; j++){
                 System.out.printf("%d\t", numeros[i][j]);
-                if(numeros[i][j] > 10){
-                    contador++;
-                }
             }
             System.out.print("\n");
         }
 
-        System.out.printf("\nNúmeros maiores que 10: %d", contador);
+        System.out.printf("\nQuantidade de números maior que 10: %d", contMaiorQueDez);
 
         sc.close();
     }
