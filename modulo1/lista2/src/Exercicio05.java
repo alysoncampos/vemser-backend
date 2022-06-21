@@ -14,7 +14,7 @@ public class Exercicio05 {
 
         System.out.println("\nOrdem contrária à que foram digitados: ");
         for(int i = 0; i < numeros.length; i++){
-            System.out.printf("%d ", numeros[(numeros.length-1)-i]);
+            System.out.printf("%d ", numeros[(numeros.length - 1) -i]);
         }
 
         sc.close();

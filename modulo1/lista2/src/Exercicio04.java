@@ -9,11 +9,8 @@ public class Exercicio04 {
         Scanner sc = new Scanner(System.in);
 
         for(int i = 0; i < numeros.length; i++){
-            System.out.printf("Digite o %d° número: ", i+1);
+            System.out.printf("Digite o %d° número: ", i + 1);
             numeros[i] = sc.nextInt();
-        }
-
-        for(int i = 0; i < numeros.length; i++){
             if (numeros[i] < menorNumero) {
                 menorNumero = numeros[i];
                 posicao = i;
