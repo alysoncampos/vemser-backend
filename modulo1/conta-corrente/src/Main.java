@@ -110,10 +110,8 @@ public class Main {
         System.out.println();
         System.out.println("Imprimir Contatos: ");
         natalia.imprimirContatos();
-        System.out.println();
         System.out.println("Imprimir Endereços: ");
         natalia.imprimirEnderecos();
-        System.out.println();
         System.out.println("Imprimir Cliente: ");
         natalia.imprimirCliente();
 

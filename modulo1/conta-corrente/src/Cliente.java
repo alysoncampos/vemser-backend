@@ -9,6 +9,7 @@ public class Cliente {
         for(Contato contato : contatos){
             if(contato != null){
                 contato.imprimirContato();
+                System.out.println();
             }
         }
     }
@@ -17,16 +18,17 @@ public class Cliente {
         for (Endereco endereco : enderecos){
             if(endereco != null){
                 endereco.imprimirEndereco();
+                System.out.println();
             }
         }
     }
 
     public void imprimirCliente(){
         System.out.printf("Nome: %s %nCPF: %s %n", nome, cpf);
-        System.out.println("Endereços: ");
-        imprimirEnderecos();
-        System.out.println("Contatos: ");
-        imprimirContatos();
+//        System.out.println("Endereços: ");
+//        imprimirEnderecos();
+//        System.out.println("Contatos: ");
+//        imprimirContatos();
     }
 
     @Override
