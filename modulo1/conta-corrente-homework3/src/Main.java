@@ -117,27 +117,37 @@ public class Main {
                               "Taxa de saque: R%.2f %n", alysonCPagamento.getSaldo(), ContaPagamento.TAXA_SAQUE);
         }
         System.out.println();
+        System.out.println("15 - Teste Tranferencia Conta Pagamento: R$200.00 ");
+        if(alysonCPagamento.transferir(nataliaCPoupanca, 200.00)){
+            System.out.println("-- Transferência realizada com sucesso! --");
+            System.out.printf("Valor: R$%.2f %n" +
+                              "Conta de Destino: %s %n" +
+                              "Beneficiário: %s %n" +
+                              "Saldo atual: R$%.2f %n", 200.00, nataliaCPoupanca.getNumeroConta(),
+                               nataliaCPoupanca.getCliente().getNome(), alysonCPagamento.getSaldo());
+        }
+        System.out.println();
         System.out.println("=========================================");
         System.out.println();
         System.out.println("TESTANDO MÉTODOS DA CLASSE CONTA POUPANÇA");
         System.out.println();
-        System.out.println("15 - Teste imprimir Conta Poupança: ");
+        System.out.println("16 - Teste imprimir Conta Poupança: ");
         nataliaCPoupanca.imprimir();
         System.out.println();
-        System.out.println("16 - Teste de saque válido Conta Poupança: R$300.00");
+        System.out.println("17 - Teste de saque válido Conta Poupança: R$300.00");
         if(alysonCCorrente.sacar(300.00)){
             System.out.println("--- Saque efetuado com sucesso ---");
             System.out.printf("Valor do saque: R$%.2f. %n" +
                               "Novo Saldo: R$%.2f %n", 300.00, nataliaCPoupanca.getSaldo());
         }
         System.out.println();
-        System.out.println("17 - Teste de saque inválido Conta Poupança: R$5000.00");
+        System.out.println("18 - Teste de saque inválido Conta Poupança: R$5000.00");
         if(!alysonCCorrente.sacar(5000.00)){
             System.out.println("--- Saque não autorizado! ---");
             System.out.printf("Saldo atual: R$%.2f %n", nataliaCPoupanca.getSaldo());
         }
         System.out.println();
-        System.out.println("18 - Teste creditar taxa Conta Poupança: ");
+        System.out.println("19 - Teste creditar taxa Conta Poupança: ");
         nataliaCPoupanca.creditarTaxa();
         nataliaCPoupanca.imprimir();
     }

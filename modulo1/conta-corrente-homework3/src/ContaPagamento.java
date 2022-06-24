@@ -17,12 +17,22 @@ public class ContaPagamento extends Conta implements Impressao {
     }
 
     @Override
+    public Boolean transferir(Conta contaDestino, double valor) {
+        if(valor <= 0.0 || valor > getSaldo()){
+            return false;
+        }
+        setSaldo(getSaldo() - valor);
+        contaDestino.depositar(valor);
+        return true;
+    }
+
+    @Override
     public void imprimir() {
         System.out.println("--- Cliente Conta Pagamento ---");
         getCliente().imprimirCliente();
         System.out.printf("Número da conta: %s %n" +
                           "Agência: %d %n" +
                           "Saldo: R$%.2f %n" +
-                          "Taxa saque: R%.2f %n", getNumeroConta(), getAgencia(), getSaldo(), TAXA_SAQUE);
+                          "Taxa de saque: R%.2f %n", getNumeroConta(), getAgencia(), getSaldo(), TAXA_SAQUE);
     }
 }
