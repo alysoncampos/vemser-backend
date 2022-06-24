@@ -8,22 +8,15 @@ public class ContaPagamento extends Conta implements Impressao {
 
     @Override
     public Boolean sacar(double valor) {
-        double valorTotal = valor + TAXA_SAQUE;
-        if(valor <= 0.0 || valorTotal > getSaldo()) {
-            return false;
-        }
-        setSaldo(getSaldo() - valorTotal);
-        return true;
+        return super.sacar(valor + TAXA_SAQUE);
     }
 
     @Override
     public Boolean transferir(Conta contaDestino, double valor) {
-        if(valor <= 0.0 || valor > getSaldo()){
-            return false;
+        if(super.sacar(valor)){
+            return contaDestino.depositar(valor);
         }
-        setSaldo(getSaldo() - valor);
-        contaDestino.depositar(valor);
-        return true;
+        return false;
     }
 
     @Override

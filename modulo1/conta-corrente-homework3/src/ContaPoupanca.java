@@ -6,8 +6,7 @@ public class ContaPoupanca extends Conta {
     }
 
     public void creditarTaxa(){
-        super.setSaldo(getSaldo() * JUROS_MENSAL);
-
+        setSaldo(getSaldo() * JUROS_MENSAL);
     }
 
     @Override

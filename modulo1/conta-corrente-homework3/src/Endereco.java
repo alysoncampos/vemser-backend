@@ -8,8 +8,8 @@ public class Endereco {
     private String estado;
     private String pais;
 
-    public Endereco(){
-
+    public Endereco(Integer tipo){
+        this.tipo = tipo;
     }
 
     public Endereco(Integer tipo, String logradouro, Integer numero, String complemento, String cep, String cidade,

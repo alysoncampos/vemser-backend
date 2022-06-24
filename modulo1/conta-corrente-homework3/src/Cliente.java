@@ -19,19 +19,23 @@ public class Cliente {
     }
 
     public void imprimirContatos(){
-        for(Contato contato : listaContatos){
-            if(contato != null){
-                contato.imprimirContato();
-                System.out.println();
+        if(listaContatos != null){
+            for(Contato contato : listaContatos){
+                if(contato != null){
+                    contato.imprimirContato();
+                    System.out.println();
+                }
             }
         }
     }
 
     public void imprimirEnderecos(){
-        for (Endereco endereco : listaEnderecos){
-            if(endereco != null){
-                endereco.imprimirEndereco();
-                System.out.println();
+        if(listaEnderecos != null){
+            for (Endereco endereco : listaEnderecos){
+                if(endereco != null){
+                    endereco.imprimirEndereco();
+                    System.out.println();
+                }
             }
         }
     }

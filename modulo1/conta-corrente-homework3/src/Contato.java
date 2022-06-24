@@ -3,8 +3,8 @@ public class Contato {
     private String telefone;
     private int tipo; // 1- residencial / 2- comercial
 
-    public Contato(){
-
+    public Contato(int tipo){
+        this.tipo = tipo;
     }
 
     public Contato(String descricao, String telefone, int tipo) {

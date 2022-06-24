@@ -135,14 +135,14 @@ public class Main {
         nataliaCPoupanca.imprimir();
         System.out.println();
         System.out.println("17 - Teste de saque válido Conta Poupança: R$300.00");
-        if(alysonCCorrente.sacar(300.00)){
+        if(nataliaCPoupanca.sacar(300.00)){
             System.out.println("--- Saque efetuado com sucesso ---");
             System.out.printf("Valor do saque: R$%.2f. %n" +
                               "Novo Saldo: R$%.2f %n", 300.00, nataliaCPoupanca.getSaldo());
         }
         System.out.println();
         System.out.println("18 - Teste de saque inválido Conta Poupança: R$5000.00");
-        if(!alysonCCorrente.sacar(5000.00)){
+        if(!nataliaCPoupanca.sacar(5000.00)){
             System.out.println("--- Saque não autorizado! ---");
             System.out.printf("Saldo atual: R$%.2f %n", nataliaCPoupanca.getSaldo());
         }
