@@ -19,7 +19,7 @@ public class Exercicio06 {
                     "4- City%n" +
                     "5- Happy%n" +
                     "6- Sad%n" +
-                    "7- Shoud%n" +
+                    "7- Should%n" +
                     "8- Could%n");
             System.out.print("Escreva a palavra que deseja traduzir: ");
             sc.nextLine();
@@ -44,7 +44,7 @@ public class Exercicio06 {
                     System.out.println("Sad : Triste");
                     break;
                 case "Shoud":
-                    System.out.println("Shoud : Deveria");
+                    System.out.println("Should : Deveria");
                     break;
                 case "Could":
                     System.out.println("Could : Poderia");
@@ -86,7 +86,7 @@ public class Exercicio06 {
                     System.out.println("Triste : Sad");
                     break;
                 case "Deveria":
-                    System.out.println("Deveria : Shoud");
+                    System.out.println("Deveria : Should");
                     break;
                 case "Poderia":
                     System.out.println("Poderia : Could");

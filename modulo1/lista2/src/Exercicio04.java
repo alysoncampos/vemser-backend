@@ -4,7 +4,7 @@ public class Exercicio04 {
     public static void main(String[] args){
 
         int[] numeros = new int[3];
-        int menorNumero = 9999, posicao = 0;
+        int menorNumero = Integer.MAX_VALUE, posicao = 0;
 
         Scanner sc = new Scanner(System.in);
 
