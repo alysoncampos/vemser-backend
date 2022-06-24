@@ -56,37 +56,76 @@ public class Main {
         System.out.println("TESTANDO MÉTODOS DA CLASSE CONTA CORRETE");
         System.out.println();
         System.out.println("1 - Imprimir Conta Corrente: ");
-        alysonCC.imprimir(); //ok
+        alysonCC.imprimir();
         System.out.println();
         System.out.println("2 - Teste de saque válido: R$100.00");
-        alysonCC.sacar(100.00); //ok
+        if(alysonCC.sacar(100.00)){
+            System.out.println("--- Saque efetuado com sucesso ---");
+            System.out.printf("Valor do saque: R$%.2f. %n" +
+                              "Novo Saldo: R$%.2f %n" +
+                              "Limite com Cheque Especial: R$%.2f %n", 100.00, alysonCC.getSaldo(),
+                               alysonCC.retornarSaldoComChequeEspecial());
+        }
         System.out.println();
         System.out.println("3 - Teste de saque inválido: R$2000.00");
-        alysonCC.sacar(2000.00); //ok
+        if(!alysonCC.sacar(2000.00)){
+            System.out.println("--- Saque não autorizado! ---");
+            System.out.printf("Saldo atual: R$%.2f %n" +
+                              "Limite com Cheque Especial: R$%.2f %n", alysonCC.getSaldo(),
+                               alysonCC.retornarSaldoComChequeEspecial());
+        }
         System.out.println();
         System.out.println("4 - Teste deposito válido: R$300.00");
-        alysonCC.depositar(300.00); //ok
+        if(alysonCC.depositar(300.00)){
+            System.out.println("--- Depósito realizado com sucesso! ---");
+            System.out.printf("Valor do depósito: R$%.2f %n" +
+                              "Beneficiário: %s %n", 300.00, alysonCC.getCliente().getNome());
+        }
         System.out.println();
         System.out.println("5 - Teste deposito inválido: -R$300.00");
-        alysonCC.depositar(-300.00); //ok
+        if(!alysonCC.depositar(-300.00)){
+            System.out.println("--- Depósito não autorizado! ---");
+            System.out.println("Informe um valor válido!");
+        }
         System.out.println();
         System.out.println("6 - Teste transferencia válida: R$200.00");
-        alysonCC.transferir(nataliaCP, 200.00);
+        if(alysonCC.transferir(nataliaCP, 200.00)){
+            System.out.println("--- Transferência realizada com sucesso! ---");
+            System.out.printf("Valor: R$%.2f %n" +
+                            "Conta de Destino: %s %n" +
+                            "Beneficiário: %s %n" +
+                            "Seu Saldo atual: R$%.2f %n", 200.00, nataliaCP.getNumeroConta(),
+                            nataliaCP.getCliente().getNome(), alysonCC.getSaldo());
+        }
         System.out.println();
         System.out.println("7 - Teste transferencia inválida: R$5000.00");
-        alysonCC.transferir(nataliaCP, 5000.00); //ok
+        if(!alysonCC.transferir(nataliaCP, 5000.00)){
+            System.out.println("--- Transferência não autorizada! ---");
+            System.out.printf("Saldo atual: R$%.2f %n", alysonCC.getSaldo());
+        }
         System.out.println();
         System.out.println("=========================================");
         System.out.println();
         System.out.println("TESTANDO MÉTODOS DA CLASSE CONTA POUPANÇA");
         System.out.println();
         System.out.println("8 - Teste imprimir Conta Poupança: ");
-        nataliaCP.imprimir(); //ok
-        System.out.println();
-        System.out.println("9 - Teste creditar taxa: ");
-        nataliaCP.creditarTaxa();
-        System.out.println();
         nataliaCP.imprimir();
-
+        System.out.println();
+        System.out.println("9 - Teste de saque válido: R$300.00");
+        if(alysonCC.sacar(300.00)){
+            System.out.println("--- Saque efetuado com sucesso ---");
+            System.out.printf("Valor do saque: R$%.2f. %n" +
+                              "Novo Saldo: R$%.2f %n", 300.00, nataliaCP.getSaldo());
+        }
+        System.out.println();
+        System.out.println("10 - Teste de saque inválido: R$5000.00");
+        if(!alysonCC.sacar(5000.00)){
+            System.out.println("--- Saque não autorizado! ---");
+            System.out.printf("Saldo atual: R$%.2f %n", nataliaCP.getSaldo());
+        }
+        System.out.println();
+        System.out.println("11 - Teste creditar taxa: ");
+        nataliaCP.creditarTaxa();
+        nataliaCP.imprimir();
     }
 }

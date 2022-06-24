@@ -12,7 +12,8 @@ public class Endereco {
 
     }
 
-    public Endereco(Integer tipo, String logradouro, Integer numero, String complemento, String cep, String cidade, String estado, String pais) {
+    public Endereco(Integer tipo, String logradouro, Integer numero, String complemento, String cep, String cidade,
+                    String estado, String pais) {
         this.tipo = tipo;
         this.logradouro = logradouro;
         this.numero = numero;

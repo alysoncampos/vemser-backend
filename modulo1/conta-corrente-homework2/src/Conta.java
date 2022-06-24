@@ -46,46 +46,27 @@ public abstract class Conta implements Movimentacao {
     @Override
     public Boolean sacar(double valor) {
         if(valor > saldo || valor < 0.0){
-            System.out.println("--- Saque não autorizado! ---");
             return false;
         }
-        saldo -= valor;
-        System.out.println("--- Saque efetuado com sucesso ---");
-        System.out.printf("Valor do saque: R$%.2f. %n" +
-                          "Novo Saldo: R$%.2f %n", valor, getSaldo());
+        this.setSaldo(this.getSaldo() - valor);
         return true;
     }
 
     @Override
     public Boolean depositar(double valor) {
         if(valor <= 0.0){
-            System.out.println("--- Depósito não autorizado! ---");
-            System.out.println("Informe um valor válido!");
             return false;
         }
-        saldo += valor;
-        System.out.println("--- Depósito realizado com sucesso! ---");
-        System.out.printf("Valor do depósito: R$%.2f %n" +
-                          "Beneficiário: %s %n", valor, getCliente().getNome());
+        this.setSaldo(this.getSaldo() + valor);
         return true;
     }
 
     @Override
-    public Boolean transferir(Conta conta, double valor) {
-        if(valor > saldo || valor < 0.0){
-            System.out.println("--- Transferência não autorizada! ---");
-            System.out.printf("Saldo atual: R$%.2f %n", getSaldo());
-            return false;
+    public Boolean transferir(Conta contaDestino, double valor) {
+        if(this.sacar(valor)){
+            return contaDestino.depositar(valor);
         }
-        saldo -= valor;
-        conta.saldo += valor;
-        System.out.println("--- Transferência realizada com sucesso! ---");
-        System.out.printf("Valor: R$%.2f %n" +
-                          "Conta de Destino: %s %n" +
-                          "Beneficiário: %s %n" +
-                          "Seu Saldo atual: R$%.2f %n", valor, conta.numeroConta, conta.getCliente().getNome(),
-                          getSaldo());
-        return true;
+        return false;
     }
 
     public abstract void imprimir();
