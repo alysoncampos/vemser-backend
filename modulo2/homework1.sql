@@ -1,6 +1,6 @@
 CREATE TABLE VEM_SER.ESTUDANTE(
 	id_estudante NUMBER NOT NULL,
-	nome VARCHAR(200) NOT NULL,
+	nome VARCHAR2(200) NOT NULL,
 	data_nascimento DATE NOT NULL,
 	nr_matricula NUMBER(10) UNIQUE NOT NULL,
 	ativo CHAR(1),
