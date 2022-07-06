@@ -1,0 +1,122 @@
+{
+	"info": {
+		"_postman_id": "9e24cf65-9897-47c1-9622-2749ab646644",
+		"name": "homework2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18111986"
+	},
+	"item": [
+		{
+			"name": "/contato",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/contato",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"contato"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/contato/byIdPessoa/{idPessoa}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/contato/byIdPessoa/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"contato",
+						"byIdPessoa",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/contato",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"idPessoa\": 2,\n    \"tipoContato\": \"COMERCIAL\",\n    \"numero\": \"81962125214\",\n    \"descricao\": \"whatsapp\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/contato",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"contato"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/contato/{idContato}",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"idContato\": 7,\n        \"idPessoa\": 2,\n        \"tipoContato\": \"RESIDENCIAL\",\n        \"numero\": \"8199999999\",\n        \"descricao\": \"telegram\"\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/contato/7",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"contato",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/contato/{idContato}",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/contato/7",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"contato",
+						"7"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
