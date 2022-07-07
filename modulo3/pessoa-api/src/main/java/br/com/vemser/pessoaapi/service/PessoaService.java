@@ -21,14 +21,12 @@ public class PessoaService {
         //pessoaRepository = new PessoaRepository();
     }
 
-    public Pessoa create(Pessoa pessoa){
-        pessoa.setIdPessoa(COUNTER.incrementAndGet());
-        pessoaRepository.list().add(pessoa);
-        return pessoa;
-    }
-
     public List<Pessoa> list(){
         return pessoaRepository.list();
+    }
+
+    public Pessoa create(Pessoa pessoa){
+        return pessoaRepository.create(pessoa);
     }
 
     public Pessoa update(Integer id,

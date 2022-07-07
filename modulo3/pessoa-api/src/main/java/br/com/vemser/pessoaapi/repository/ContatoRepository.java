@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.stream.Collectors;
 
 @Repository
 public class ContatoRepository {
@@ -26,4 +25,9 @@ public class ContatoRepository {
         return listaContatos;
     }
 
+    public Contato create(Contato contato){
+        contato.setIdContato(COUNTER.incrementAndGet());
+        listaContatos.add(contato);
+        return contato;
+    }
 }

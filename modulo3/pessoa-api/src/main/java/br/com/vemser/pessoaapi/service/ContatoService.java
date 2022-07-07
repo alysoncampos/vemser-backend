@@ -26,31 +26,31 @@ public class ContatoService {
         //contatoRepository = new ContatoRepository();
     }
 
-    public Contato create(Integer idPessoa, Contato contato) throws Exception {
-        Pessoa pessoa = pessoaRepository.list().stream()
-                .filter(p -> p.getIdPessoa().equals(idPessoa))
-                .findFirst()
-                .orElseThrow(() -> new Exception("Pessoa não encontrada"));
-        contato.setIdPessoa(pessoa.getIdPessoa());
-        contato.setIdContato(COUNTER.incrementAndGet());
-        contatoRepository.list().add(contato);
-        return contato;
-    }
-
     public List<Contato> list(){
         return contatoRepository.list();
     }
 
-    public List<Contato> listContatoById(Integer id) {
-        return contatoRepository.list().stream()
+    public Contato listContatoById(Integer id) throws Exception {
+        Contato contatoEncontrado = contatoRepository.list().stream()
                 .filter(contato -> contato.getIdContato().equals(id))
-                .collect(Collectors.toList());
+                .findFirst()
+                .orElseThrow(() -> new Exception("Contato não encontrado"));
+        return contatoEncontrado;
     }
 
     public List<Contato> listByIdPessoa(Integer id) {
         return contatoRepository.list().stream()
                 .filter(contato -> contato.getIdPessoa().equals(id))
                 .collect(Collectors.toList());
+    }
+
+    public Contato create(Integer idPessoa, Contato contato) throws Exception {
+        Pessoa pessoa = pessoaRepository.list().stream()
+                .filter(p -> p.getIdPessoa().equals(idPessoa))
+                .findFirst()
+                .orElseThrow(() -> new Exception("Pessoa não encontrada"));
+        contato.setIdPessoa(pessoa.getIdPessoa());
+        return contatoRepository.create(contato);
     }
 
     public Contato update(Integer id,

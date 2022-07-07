@@ -24,7 +24,7 @@ public class ContatoController {
     }
 
     @GetMapping("/{idContato}") //localhost:8080/contato/{idContato}
-    public List<Contato> listContatoById(@PathVariable("idContato") Integer id) {
+    public Contato listContatoById(@PathVariable("idContato") Integer id) throws Exception {
         return contatoService.listContatoById(id);
     }
 

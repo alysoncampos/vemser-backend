@@ -27,4 +27,9 @@ public class PessoaRepository {
         return listaPessoas;
     }
 
+    public Pessoa create(Pessoa pessoa){
+        pessoa.setIdPessoa(COUNTER.incrementAndGet());
+        listaPessoas.add(pessoa);
+        return pessoa;
+    }
 }
