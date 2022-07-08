@@ -1,12 +1,22 @@
 package br.com.vemser.pessoaapi.entity;
 
+import org.hibernate.validator.constraints.br.CPF;
+
+import javax.validation.constraints.*;
 import java.time.LocalDate;
 
 public class Pessoa {
 
     private Integer idPessoa;
+    @NotBlank(message="O atributo Nome é obrigatório")
     private String nome;
+
+    @NotNull
+    @Past
     private LocalDate dataNascimento;
+
+    @CPF
+    @NotBlank
     private String cpf;
 
     public Pessoa() {

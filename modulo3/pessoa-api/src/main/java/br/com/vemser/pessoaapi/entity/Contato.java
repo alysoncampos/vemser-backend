@@ -1,16 +1,27 @@
 package br.com.vemser.pessoaapi.entity;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class Contato {
     private Integer idContato;
     private Integer idPessoa;
-    private String tipoContato;
+
+    @NotNull(message = "Informe o tipo de contato")
+    private TipoContato tipoContato;
+
+    @NotBlank(message = "Informe o número")
+    @Size(max=13, message = "O número pode ter no máximo 13 caracteres")
     private String numero;
+
+    @NotBlank
     private String descricao;
 
     public Contato() {
     }
 
-    public Contato(Integer idContato, Integer idPessoa, String tipoContato, String numero, String descricao) {
+    public Contato(Integer idContato, Integer idPessoa, TipoContato tipoContato, String numero, String descricao) {
         this.idContato = idContato;
         this.idPessoa = idPessoa;
         this.tipoContato = tipoContato;
@@ -34,11 +45,11 @@ public class Contato {
         this.idPessoa = idPessoa;
     }
 
-    public String getTipoContato() {
+    public TipoContato getTipoContato() {
         return tipoContato;
     }
 
-    public void setTipoContato(String tipoContato) {
+    public void setTipoContato(TipoContato tipoContato) {
         this.tipoContato = tipoContato;
     }
 
