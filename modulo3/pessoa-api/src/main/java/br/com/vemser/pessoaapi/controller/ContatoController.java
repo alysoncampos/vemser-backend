@@ -1,5 +1,6 @@
 package br.com.vemser.pessoaapi.controller;
 
+import br.com.vemser.pessoaapi.dto.ContatoDTO;
 import br.com.vemser.pessoaapi.entity.Contato;
 import br.com.vemser.pessoaapi.exceptions.RegraDeNegocioException;
 import br.com.vemser.pessoaapi.service.ContatoService;
@@ -25,17 +26,17 @@ public class ContatoController {
     }
 
     @GetMapping //localhost:8080/contato
-    public List<Contato> list(){
-        return contatoService.list();
+    public ResponseEntity<List<ContatoDTO>> list(){
+        return new ResponseEntity<>(contatoService.list(), HttpStatus.OK);
     }
 
     @GetMapping("/{idContato}") //localhost:8080/contato/{idContato}
-    public List<Contato> listByIdContato(@PathVariable("idContato") Integer id) throws Exception {
+    public ContatoDTO listByIdContato(@PathVariable("idContato") Integer id) throws Exception {
         return contatoService.listByIdContato(id);
     }
 
     @GetMapping("/byIdPessoa/{idPessoa}") //localhost:8080/contato/byIdPessoa/{idPessoa}
-    public List<Contato> listContatoByIdPessoa(@PathVariable("idPessoa") Integer idPessoa) {
+    public List<ContatoDTO> listContatoByIdPessoa(@PathVariable("idPessoa") Integer idPessoa) throws RegraDeNegocioException {
         return contatoService.listContatoByIdPessoa(idPessoa);
     }
 

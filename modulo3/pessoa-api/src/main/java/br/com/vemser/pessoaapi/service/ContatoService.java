@@ -1,8 +1,11 @@
 package br.com.vemser.pessoaapi.service;
 
+import br.com.vemser.pessoaapi.dto.ContatoDTO;
 import br.com.vemser.pessoaapi.entity.Contato;
 import br.com.vemser.pessoaapi.exceptions.RegraDeNegocioException;
 import br.com.vemser.pessoaapi.repository.ContatoRepository;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +13,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@Slf4j
 public class ContatoService {
 
     @Autowired
@@ -18,23 +22,31 @@ public class ContatoService {
     @Autowired
     private PessoaService pessoaService;
 
+    @Autowired
+    private ObjectMapper objectMapper;
+
     public ContatoService() {
 
     }
 
-    public List<Contato> list(){
-        return contatoRepository.list();
-    }
-
-    public List<Contato> listByIdContato(Integer idContato) throws Exception {
+    public List<ContatoDTO> list(){
+        log.info("Chamou o listar contato");
         return contatoRepository.list().stream()
-                .filter(contato -> contato.getIdContato().equals(idContato))
+                .map(contato -> objectMapper.convertValue(contato, ContatoDTO.class))
                 .collect(Collectors.toList());
     }
 
-    public List<Contato> listContatoByIdPessoa(Integer idPessoa) {
+    public ContatoDTO listByIdContato(Integer idContato) throws RegraDeNegocioException {
+        log.info("Chamou o listar contato por id");
+        return objectMapper.convertValue(findById(idContato), ContatoDTO.class);
+    }
+
+    public List<ContatoDTO> listContatoByIdPessoa(Integer idPessoa) throws RegraDeNegocioException {
+        log.info("Chamou o listar contato por id de pessoa");
+        pessoaService.findById(idPessoa);
         return contatoRepository.list().stream()
                 .filter(contato -> contato.getIdPessoa().equals(idPessoa))
+                .map(contato -> objectMapper.convertValue(contato, ContatoDTO.class))
                 .collect(Collectors.toList());
     }
 
