@@ -44,7 +44,7 @@ public class PessoaController {
         return new ResponseEntity<>(pessoaService.listByIdPessoa(id), HttpStatus.OK);
     }
 
-    @GetMapping("/{nome}")
+    @GetMapping("/{nome}/byName")
     public ResponseEntity<List<PessoaDTO>> listByName(@PathVariable("nome") String nome) throws RegraDeNegocioException {
         return new ResponseEntity<>(pessoaService.listByName(nome), HttpStatus.OK);
     }

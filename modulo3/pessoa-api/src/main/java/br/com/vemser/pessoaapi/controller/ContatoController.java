@@ -35,21 +35,21 @@ public class ContatoController {
         return new ResponseEntity<>(contatoService.listByIdContato(id), HttpStatus.OK);
     }
 
-    @GetMapping("/byIdPessoa/{idPessoa}") //localhost:8080/contato/byIdPessoa/{idPessoa}
+    @GetMapping("/{idPessoa}/pessoa") //localhost:8080/contato/{idPessoa}/pessoa
     public ResponseEntity<List<ContatoDTO>> listContatoByIdPessoa(@PathVariable("idPessoa") Integer idPessoa) throws RegraDeNegocioException {
         return new ResponseEntity<>(contatoService.listContatoByIdPessoa(idPessoa), HttpStatus.OK);
     }
 
     @PostMapping("/{idPessoa}") //localhost:8080/contato
     public ResponseEntity<ContatoDTO> create(@PathVariable("idPessoa") Integer idPessoa,
-                                          @RequestBody @Valid ContatoCreateDTO contato) throws RegraDeNegocioException {
+                                             @RequestBody @Valid ContatoCreateDTO contato) throws RegraDeNegocioException {
         return new ResponseEntity<>(contatoService.create(idPessoa, contato), HttpStatus.CREATED);
     }
 
     @PutMapping("/{idContato}") //localhost:8080/contato/{idContato}
-    public ResponseEntity<ContatoDTO> update(@PathVariable("idContato") Integer id,
+    public ResponseEntity<ContatoDTO> update(@PathVariable("idContato") Integer idContato,
                                           @RequestBody @Valid ContatoCreateDTO contatoAtualizar) throws RegraDeNegocioException {
-        return new ResponseEntity<>(contatoService.update(id, contatoAtualizar), HttpStatus.OK);
+        return new ResponseEntity<>(contatoService.update(idContato, contatoAtualizar), HttpStatus.OK);
     }
 
     @DeleteMapping("/{idContato}") //localhost:8080/contato/{idContato}

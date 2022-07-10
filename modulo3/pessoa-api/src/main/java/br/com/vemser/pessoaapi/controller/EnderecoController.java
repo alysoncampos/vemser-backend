@@ -1,5 +1,7 @@
 package br.com.vemser.pessoaapi.controller;
 
+import br.com.vemser.pessoaapi.dto.EnderecoCreateDTO;
+import br.com.vemser.pessoaapi.dto.EnderecoDTO;
 import br.com.vemser.pessoaapi.entity.Endereco;
 import br.com.vemser.pessoaapi.exceptions.RegraDeNegocioException;
 import br.com.vemser.pessoaapi.service.EnderecoService;
@@ -25,29 +27,29 @@ public class EnderecoController {
     }
 
     @GetMapping
-    public List<Endereco> list() {
-        return enderecoService.list();
+    public ResponseEntity<List<EnderecoDTO>> list() {
+        return new ResponseEntity<>(enderecoService.list(), HttpStatus.OK) ;
     }
 
     @GetMapping("/{idEndereco}")
-    public List<Endereco> listByIdEndereco(@PathVariable("idEndereco") Integer id) {
-        return enderecoService.listByIdEndereco(id);
+    public ResponseEntity<EnderecoDTO> listByIdEndereco(@PathVariable("idEndereco") Integer idEndereco) throws RegraDeNegocioException {
+        return new ResponseEntity<>(enderecoService.listByIdEndereco(idEndereco), HttpStatus.OK);
     }
 
     @GetMapping("/{idPessoa}/pessoa")
-    public List<Endereco> listEnderecoByIdPessoa(@PathVariable("idPessoa") Integer id) {
-        return enderecoService.listEnderecoByIdPessoa(id);
+    public ResponseEntity<List<EnderecoDTO>> listEnderecoByIdPessoa(@PathVariable("idPessoa") Integer idPessoa) throws RegraDeNegocioException {
+        return new ResponseEntity<>(enderecoService.listEnderecoByIdPessoa(idPessoa), HttpStatus.OK);
     }
 
     @PostMapping("/{idPessoa}")
-    public ResponseEntity<Endereco> create(@PathVariable("idPessoa") Integer idPessoa,
-                                           @RequestBody @Valid Endereco endereco) throws RegraDeNegocioException {
-        return new ResponseEntity<>(enderecoService.create(idPessoa, endereco), HttpStatus.OK);
+    public ResponseEntity<EnderecoDTO> create(@PathVariable("idPessoa") Integer idPessoa,
+                                           @RequestBody @Valid EnderecoCreateDTO endereco) throws RegraDeNegocioException {
+        return new ResponseEntity<>(enderecoService.create(idPessoa, endereco), HttpStatus.CREATED);
     }
 
     @PutMapping("/{idEndereco}")
-    public ResponseEntity<Endereco> update(@PathVariable("idEndereco") Integer idEndereco,
-                                           @RequestBody @Valid Endereco enderecoAtualizar) throws RegraDeNegocioException {
+    public ResponseEntity<EnderecoDTO> update(@PathVariable("idEndereco") Integer idEndereco,
+                                           @RequestBody @Valid EnderecoCreateDTO enderecoAtualizar) throws RegraDeNegocioException {
         return new ResponseEntity<>(enderecoService.update(idEndereco, enderecoAtualizar), HttpStatus.OK);
     }
 

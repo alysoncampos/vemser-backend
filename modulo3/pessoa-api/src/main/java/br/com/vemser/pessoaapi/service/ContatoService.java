@@ -32,19 +32,19 @@ public class ContatoService {
     }
 
     public List<ContatoDTO> list(){
-        log.info("Chamou o listar contato");
+        log.info("Chamou listar contato");
         return contatoRepository.list().stream()
                 .map(contato -> objectMapper.convertValue(contato, ContatoDTO.class))
                 .collect(Collectors.toList());
     }
 
     public ContatoDTO listByIdContato(Integer idContato) throws RegraDeNegocioException {
-        log.info("Chamou o listar contato por id");
+        log.info("Chamou listar contato por id");
         return objectMapper.convertValue(findByIdContato(idContato), ContatoDTO.class);
     }
 
     public List<ContatoDTO> listContatoByIdPessoa(Integer idPessoa) throws RegraDeNegocioException {
-        log.info("Chamou o listar contato por idPessoa");
+        log.info("Chamou listar contato por idPessoa");
         pessoaService.findByIdPessoa(idPessoa);
         return contatoRepository.list().stream()
                 .filter(contato -> contato.getIdPessoa().equals(idPessoa))
@@ -61,7 +61,7 @@ public class ContatoService {
         contatoEntity.setIdPessoa(idPessoa);
         contatoRepository.create(contatoEntity);
 
-        log.info("Contato com id=" + contatoEntity.getIdContato() + " criado!");
+        log.warn("Contato com id=" + contatoEntity.getIdContato() + " criado!");
 
         return objectMapper.convertValue(contatoEntity, ContatoDTO.class);
     }
