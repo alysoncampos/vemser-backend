@@ -1,7 +1,7 @@
 package br.com.vemser.pessoaapi.controller;
 
+import br.com.vemser.pessoaapi.dto.ContatoCreateDTO;
 import br.com.vemser.pessoaapi.dto.ContatoDTO;
-import br.com.vemser.pessoaapi.entity.Contato;
 import br.com.vemser.pessoaapi.exceptions.RegraDeNegocioException;
 import br.com.vemser.pessoaapi.service.ContatoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,29 +31,29 @@ public class ContatoController {
     }
 
     @GetMapping("/{idContato}") //localhost:8080/contato/{idContato}
-    public ContatoDTO listByIdContato(@PathVariable("idContato") Integer id) throws Exception {
-        return contatoService.listByIdContato(id);
+    public ResponseEntity<ContatoDTO> listByIdContato(@PathVariable("idContato") Integer id) throws RegraDeNegocioException {
+        return new ResponseEntity<>(contatoService.listByIdContato(id), HttpStatus.OK);
     }
 
     @GetMapping("/byIdPessoa/{idPessoa}") //localhost:8080/contato/byIdPessoa/{idPessoa}
-    public List<ContatoDTO> listContatoByIdPessoa(@PathVariable("idPessoa") Integer idPessoa) throws RegraDeNegocioException {
-        return contatoService.listContatoByIdPessoa(idPessoa);
+    public ResponseEntity<List<ContatoDTO>> listContatoByIdPessoa(@PathVariable("idPessoa") Integer idPessoa) throws RegraDeNegocioException {
+        return new ResponseEntity<>(contatoService.listContatoByIdPessoa(idPessoa), HttpStatus.OK);
     }
 
     @PostMapping("/{idPessoa}") //localhost:8080/contato
-    public ResponseEntity<Contato> create(@PathVariable("idPessoa") Integer idPessoa,
-                                          @RequestBody @Valid Contato contato) throws RegraDeNegocioException {
-        return new ResponseEntity<>(contatoService.create(idPessoa, contato), HttpStatus.OK);
+    public ResponseEntity<ContatoDTO> create(@PathVariable("idPessoa") Integer idPessoa,
+                                          @RequestBody @Valid ContatoCreateDTO contato) throws RegraDeNegocioException {
+        return new ResponseEntity<>(contatoService.create(idPessoa, contato), HttpStatus.CREATED);
     }
 
     @PutMapping("/{idContato}") //localhost:8080/contato/{idContato}
-    public ResponseEntity<Contato> update(@PathVariable("idContato") Integer id,
-                                          @RequestBody @Valid Contato contatoAtualizar) throws RegraDeNegocioException {
+    public ResponseEntity<ContatoDTO> update(@PathVariable("idContato") Integer id,
+                                          @RequestBody @Valid ContatoCreateDTO contatoAtualizar) throws RegraDeNegocioException {
         return new ResponseEntity<>(contatoService.update(id, contatoAtualizar), HttpStatus.OK);
     }
 
     @DeleteMapping("/{idContato}") //localhost:8080/contato/{idContato}
-    public void delete(@PathVariable("idContato") Integer id) throws Exception {
+    public void delete(@PathVariable("idContato") Integer id) throws RegraDeNegocioException {
         contatoService.delete(id);
     }
 }

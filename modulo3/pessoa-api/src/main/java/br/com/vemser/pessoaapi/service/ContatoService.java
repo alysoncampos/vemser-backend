@@ -1,7 +1,9 @@
 package br.com.vemser.pessoaapi.service;
 
+import br.com.vemser.pessoaapi.dto.ContatoCreateDTO;
 import br.com.vemser.pessoaapi.dto.ContatoDTO;
 import br.com.vemser.pessoaapi.entity.Contato;
+import br.com.vemser.pessoaapi.entity.Pessoa;
 import br.com.vemser.pessoaapi.exceptions.RegraDeNegocioException;
 import br.com.vemser.pessoaapi.repository.ContatoRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -38,41 +40,61 @@ public class ContatoService {
 
     public ContatoDTO listByIdContato(Integer idContato) throws RegraDeNegocioException {
         log.info("Chamou o listar contato por id");
-        return objectMapper.convertValue(findById(idContato), ContatoDTO.class);
+        return objectMapper.convertValue(findByIdContato(idContato), ContatoDTO.class);
     }
 
     public List<ContatoDTO> listContatoByIdPessoa(Integer idPessoa) throws RegraDeNegocioException {
-        log.info("Chamou o listar contato por id de pessoa");
-        pessoaService.findById(idPessoa);
+        log.info("Chamou o listar contato por idPessoa");
+        pessoaService.findByIdPessoa(idPessoa);
         return contatoRepository.list().stream()
                 .filter(contato -> contato.getIdPessoa().equals(idPessoa))
                 .map(contato -> objectMapper.convertValue(contato, ContatoDTO.class))
                 .collect(Collectors.toList());
     }
 
-    public Contato create(Integer idPessoa, Contato contato) throws RegraDeNegocioException {
-        pessoaService.findById(idPessoa);
-        contato.setIdPessoa(idPessoa);
-        return contatoRepository.create(contato);
+    public ContatoDTO create(Integer idPessoa, ContatoCreateDTO contato) throws RegraDeNegocioException {
+        log.info("Chamou criar contato");
+
+        pessoaService.findByIdPessoa(idPessoa);
+
+        Contato contatoEntity = objectMapper.convertValue(contato, Contato.class);
+        contatoEntity.setIdPessoa(idPessoa);
+        contatoRepository.create(contatoEntity);
+
+        log.info("Contato com id=" + contatoEntity.getIdContato() + " criado!");
+
+        return objectMapper.convertValue(contatoEntity, ContatoDTO.class);
     }
 
-    public Contato update(Integer idContato,
-                          Contato contatoAtualizar) throws RegraDeNegocioException{
-        pessoaService.findById(contatoAtualizar.getIdPessoa());
-        Contato contatoRecuperado = findById(idContato);
+    public ContatoDTO update(Integer idContato,
+                          ContatoCreateDTO contatoAtualizar) throws RegraDeNegocioException{
+        log.info("Chamou atualizar contato");
+
+        pessoaService.findByIdPessoa(contatoAtualizar.getIdPessoa());
+
+        objectMapper.convertValue(contatoAtualizar, Pessoa.class);
+
+        Contato contatoRecuperado = findByIdContato(idContato);
         contatoRecuperado.setIdPessoa(contatoAtualizar.getIdPessoa());
         contatoRecuperado.setTipoContato(contatoAtualizar.getTipoContato());
         contatoRecuperado.setNumero(contatoAtualizar.getNumero());
         contatoRecuperado.setDescricao(contatoAtualizar.getDescricao());
-        return contatoRecuperado;
+
+        log.warn("Contato id=" + contatoRecuperado.getIdContato() + " atualizado!");
+
+        return objectMapper.convertValue(contatoRecuperado, ContatoDTO.class);
     }
 
-    public void delete(Integer idContato) throws Exception {
-        Contato contatoRecuperado = findById(idContato);
+    public void delete(Integer idContato) throws RegraDeNegocioException {
+        log.info("Chamou deletar contato");
+
+        Contato contatoRecuperado = findByIdContato(idContato);
         contatoRepository.list().remove(contatoRecuperado);
+
+        log.warn("Contato id=" + contatoRecuperado.getIdContato() + " deletado!");
     }
 
-    public Contato findById(Integer idContato) throws RegraDeNegocioException {
+    public Contato findByIdContato(Integer idContato) throws RegraDeNegocioException {
         Contato contatoEncontrado = contatoRepository.list().stream()
                 .filter(contato -> contato.getIdContato().equals(idContato))
                 .findFirst()

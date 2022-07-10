@@ -39,14 +39,14 @@ public class EnderecoService {
     }
 
     public Endereco create(Integer idPessoa, Endereco endereco) throws RegraDeNegocioException {
-        pessoaService.findById(idPessoa);
+        pessoaService.findByIdPessoa(idPessoa);
         endereco.setIdPessoa(idPessoa);
         return enderecoRepository.create(endereco);
     }
 
     public Endereco update(Integer idEndereco,
                            Endereco enderecoAtualizar) throws RegraDeNegocioException {
-        pessoaService.findById(enderecoAtualizar.getIdPessoa());
+        pessoaService.findByIdPessoa(enderecoAtualizar.getIdPessoa());
         Endereco enderecoRecuperado = findById(idEndereco);
         enderecoRecuperado.setIdPessoa(enderecoAtualizar.getIdPessoa());
         enderecoRecuperado.setTipo(enderecoAtualizar.getTipo());

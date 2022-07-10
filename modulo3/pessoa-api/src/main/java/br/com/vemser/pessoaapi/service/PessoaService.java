@@ -26,6 +26,7 @@ public class PessoaService {
     public PessoaService() {
 
     }
+
     public List<PessoaDTO> list(){
         log.info("Chamou o listar pessoa");
         return pessoaRepository.list().stream()
@@ -35,7 +36,7 @@ public class PessoaService {
 
     public PessoaDTO listByIdPessoa(Integer idPessoa) throws RegraDeNegocioException {
         log.info("Chamou o listar pessoa por id");
-        return objectMapper.convertValue(findById(idPessoa), PessoaDTO.class);
+        return objectMapper.convertValue(findByIdPessoa(idPessoa), PessoaDTO.class);
     }
 
     public List<PessoaDTO> listByName(String nome) throws RegraDeNegocioException {
@@ -69,7 +70,7 @@ public class PessoaService {
 
         objectMapper.convertValue(pessoaAtualizar, Pessoa.class);
 
-        Pessoa pessoaRecuperada = findById(idPessoa);
+        Pessoa pessoaRecuperada = findByIdPessoa(idPessoa);
         pessoaRecuperada.setCpf(pessoaAtualizar.getCpf());
         pessoaRecuperada.setNome(pessoaAtualizar.getNome());
         pessoaRecuperada.setDataNascimento(pessoaAtualizar.getDataNascimento());
@@ -82,13 +83,13 @@ public class PessoaService {
     public void delete(Integer id) throws RegraDeNegocioException {
         log.info("Chamou deletar pessoa");
 
-        Pessoa pessoaRecuperada = findById(id);
+        Pessoa pessoaRecuperada = findByIdPessoa(id);
         pessoaRepository.list().remove(pessoaRecuperada);
 
-        log.warn("Pessoa " + pessoaRecuperada.getNome() + " deletada!");
+        log.warn("Pessoa id=" + pessoaRecuperada.getIdPessoa() + " deletada!");
     }
 
-    public Pessoa findById(Integer id) throws RegraDeNegocioException {
+    public Pessoa findByIdPessoa(Integer id) throws RegraDeNegocioException {
         return pessoaRepository.list().stream()
                 .filter(pessoa -> pessoa.getIdPessoa().equals(id))
                 .findFirst()
