@@ -19,10 +19,8 @@
                         </div>
 
                         <div style="font-size: 24px; color: #555100;">
-                            <br> Seu endereço foi cadastrado com sucesso! :) <br>
-                            <br> Seu indetificador id é ${idEndereco} <br>
-                        </div>
-                        <div>
+                            <br> Seu endereço com id ${idEndereco} foi cadastrado com sucesso! :) <br>
+                            <br> Seu idetificador pessoal é id ${id} <br>
                             <br> Qualquer dúvida é só entrar em contato com o suporte pelo e-mail ${email}<br>
                             <br>Att, <br>
                             <br> sistema.<br>

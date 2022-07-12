@@ -2,7 +2,7 @@ package br.com.vemser.pessoaapi.service;
 
 import br.com.vemser.pessoaapi.dto.EnderecoDTO;
 import br.com.vemser.pessoaapi.dto.PessoaDTO;
-import br.com.vemser.pessoaapi.entity.TipoDeMensagem;
+import br.com.vemser.pessoaapi.entity.TipoMensagem;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import lombok.RequiredArgsConstructor;
@@ -34,13 +34,13 @@ public class EmailService {
         SimpleMailMessage message = new SimpleMailMessage();
 
         message.setFrom(from);
-        message.setTo("alyson.siqueira@dbccompany.com");
+        message.setTo("alyson.siqueira@dbccompany.com.br");
         message.setSubject("Assunto 1");
         message.setText("Meu e-mail!!");
         emailSender.send(message);
     }
 
-    public void sendEmail(PessoaDTO pessoaDTO, String tipoDeMensagem) {
+    public void sendEmailPessoa(PessoaDTO pessoaDTO, String tipoDeMensagem) {
         MimeMessage mimeMessage = emailSender.createMimeMessage();
         try {
 
@@ -48,14 +48,14 @@ public class EmailService {
 
             mimeMessageHelper.setFrom(from);
             mimeMessageHelper.setTo(pessoaDTO.getEmail());
-            if (tipoDeMensagem.equals(TipoDeMensagem.CREATE.getTipo())){
+            if (tipoDeMensagem.equals(TipoMensagem.CREATE.getTipo())){
                 mimeMessageHelper.setSubject("Cadastro realizado");
-            } else if (tipoDeMensagem.equals(TipoDeMensagem.UPDATE.getTipo())) {
+            } else if (tipoDeMensagem.equals(TipoMensagem.UPDATE.getTipo())) {
                 mimeMessageHelper.setSubject("Cadastro atualizado");
             } else {
                 mimeMessageHelper.setSubject("Cadastro deletado");
             }
-            mimeMessageHelper.setText(getContentFromTemplate(pessoaDTO, tipoDeMensagem), true);
+            mimeMessageHelper.setText(getContentFromTemplatePessoa(pessoaDTO, tipoDeMensagem), true);
 
             emailSender.send(mimeMessageHelper.getMimeMessage());
         } catch (MessagingException | IOException | TemplateException e) {
@@ -64,16 +64,16 @@ public class EmailService {
 
     }
 
-    public String getContentFromTemplate(PessoaDTO pessoaDTO, String tipoDeMensagem) throws IOException, TemplateException {
+    public String getContentFromTemplatePessoa(PessoaDTO pessoaDTO, String tipoDeMensagem) throws IOException, TemplateException {
         Map<String, Object> dados = new HashMap<>();
         dados.put("nome", pessoaDTO.getNome());
         dados.put("id", pessoaDTO.getIdPessoa());
         dados.put("email", this.from);
 
         Template template;
-        if(tipoDeMensagem.equals(TipoDeMensagem.CREATE.getTipo())){
+        if (tipoDeMensagem.equals(TipoMensagem.CREATE.getTipo())){
             template = fmConfiguration.getTemplate("email-template-create.ftl");
-        } else if (tipoDeMensagem.equals(TipoDeMensagem.UPDATE.getTipo())) {
+        } else if (tipoDeMensagem.equals(TipoMensagem.UPDATE.getTipo())) {
             template = fmConfiguration.getTemplate("email-template-update.ftl");
         } else {
             template = fmConfiguration.getTemplate("email-template-delete.ftl");
@@ -82,7 +82,7 @@ public class EmailService {
         return html;
     }
 
-    public void sendEmailWithAddress(PessoaDTO pessoaDTO, EnderecoDTO enderecoDTO, String tipoDeMensagem) {
+    public void sendEmailEndereco(PessoaDTO pessoaDTO, EnderecoDTO enderecoDTO, String tipoDeMensagem) {
         MimeMessage mimeMessage = emailSender.createMimeMessage();
         try {
 
@@ -90,14 +90,14 @@ public class EmailService {
 
             mimeMessageHelper.setFrom(from);
             mimeMessageHelper.setTo(pessoaDTO.getEmail());
-            if (tipoDeMensagem.equals(TipoDeMensagem.CREATE.getTipo())){
+            if (tipoDeMensagem.equals(TipoMensagem.CREATE.getTipo())){
                 mimeMessageHelper.setSubject("Endereço cadastrado");
-            } else if (tipoDeMensagem.equals(TipoDeMensagem.UPDATE.getTipo())) {
+            } else if (tipoDeMensagem.equals(TipoMensagem.UPDATE.getTipo())) {
                 mimeMessageHelper.setSubject("Endereço atualizado");
             } else {
                 mimeMessageHelper.setSubject("Endereço deletado");
             }
-            mimeMessageHelper.setText(getContentFromTemplateWithAddress(pessoaDTO, enderecoDTO, tipoDeMensagem), true);
+            mimeMessageHelper.setText(getContentFromTemplateEndereco(pessoaDTO, enderecoDTO, tipoDeMensagem), true);
 
             emailSender.send(mimeMessageHelper.getMimeMessage());
         } catch (MessagingException | IOException | TemplateException e) {
@@ -106,7 +106,7 @@ public class EmailService {
 
     }
 
-    public String getContentFromTemplateWithAddress(PessoaDTO pessoaDTO, EnderecoDTO enderecoDTO, String tipoDeMensagem) throws IOException, TemplateException {
+    public String getContentFromTemplateEndereco(PessoaDTO pessoaDTO, EnderecoDTO enderecoDTO, String tipoDeMensagem) throws IOException, TemplateException {
         Map<String, Object> dados = new HashMap<>();
         dados.put("nome", pessoaDTO.getNome());
         dados.put("id", pessoaDTO.getIdPessoa());
@@ -114,9 +114,9 @@ public class EmailService {
         dados.put("email", this.from);
 
         Template template;
-        if(tipoDeMensagem.equals(TipoDeMensagem.CREATE.getTipo())){
+        if (tipoDeMensagem.equals(TipoMensagem.CREATE.getTipo())){
             template = fmConfiguration.getTemplate("email-template-address-create.ftl");
-        } else if (tipoDeMensagem.equals(TipoDeMensagem.UPDATE.getTipo())) {
+        } else if (tipoDeMensagem.equals(TipoMensagem.UPDATE.getTipo())) {
             template = fmConfiguration.getTemplate("email-template-address-update.ftl");
         } else {
             template = fmConfiguration.getTemplate("email-template-address-delete.ftl");

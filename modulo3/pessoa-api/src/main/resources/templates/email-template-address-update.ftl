@@ -19,10 +19,8 @@
                         </div>
 
                         <div style="font-size: 24px; color: #555100;">
-                            <br> Seus endereço foi atualizado no nosso sistema. :) <br>
-                            <br> Seu identificador id é ${idEndereco} <br>
-                        </div>
-                        <div>
+                            <br> Seus endereço com id ${idEndereco} foi atualizado no nosso sistema. :) <br>
+                            <br> Seu identificador pessoal é id ${id} <br>
                             <br> Qualquer dúvida é só contatar o suporte pelo e-mail ${email} <br>
                             <br>Att, <br>
                             <br>Sistema.<br>

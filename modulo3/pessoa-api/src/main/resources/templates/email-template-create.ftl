@@ -20,10 +20,8 @@
 
                         <div style="font-size: 24px; color: #555100;">
                             <br> Estamos felizes em ter você em nosso sistema :) <br>
-                            <br> Seu cadastro foi realizado com sucesso, seu indetificador é ${id} <br>
-                            <br><br>
+                            <br> Seu cadastro foi realizado com sucesso, seu idetificador id é ${id} <br>
                             <br> Qualquer dúvida é entrar em contato com o suporte pelo e-mail ${email}<br> <br>
-                            <br> <br>
                             <br>Att, <br>
                             <br> sistema.<br>
                         </div>

@@ -20,11 +20,9 @@
 
                         <div style="font-size: 24px; color: #555100;">
                             <br> Seus dados foram atualizados no nosso sistema. <br>
-                            <br><br>
                             <br> Qualquer dúvida é só contatar o suporte pelo e-mail ${email} <br>
-                            <br><br>
                             <br>Att, <br>
-                            <br>Sistema.<br>
+                            <br>sistema.<br>
                         </div>
                     </td>
                 </tr>

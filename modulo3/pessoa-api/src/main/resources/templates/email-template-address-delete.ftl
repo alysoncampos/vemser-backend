@@ -19,10 +19,8 @@
                         </div>
 
                         <div style="font-size: 24px; color: #555100;">
-                            <br> Você removeu um endereço em nosso sistema. <br>
-                            <br> Seu indetificador id é ${idEndereco} <br>
-                        </div>
-                        <div>
+                            <br> Você removeu o endereço com id ${idEndereco} do nosso sistema. <br>
+                            <br> Seu idetificador pessoal é id ${id} <br>
                             <br> Qualquer dúvida é só contatar o suporte pelo e-mail ${email} <br>
                             <br>Att, <br>
                             <br>Sistema.<br>
