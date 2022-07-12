@@ -14,15 +14,12 @@ public class Pessoa {
 
     private Integer idPessoa;
 
-    @NotBlank(message="O atributo Nome é obrigatório")
     private String nome;
 
-    @NotNull
-    @Past
     private LocalDate dataNascimento;
 
-    @CPF
-    @NotBlank
     private String cpf;
+
+    private String email;
 
 }

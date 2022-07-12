@@ -3,6 +3,7 @@ package br.com.vemser.pessoaapi.service;
 import br.com.vemser.pessoaapi.dto.PessoaCreateDTO;
 import br.com.vemser.pessoaapi.dto.PessoaDTO;
 import br.com.vemser.pessoaapi.entity.Pessoa;
+import br.com.vemser.pessoaapi.entity.TipoDeMensagem;
 import br.com.vemser.pessoaapi.exceptions.RegraDeNegocioException;
 import br.com.vemser.pessoaapi.repository.PessoaRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -22,6 +23,9 @@ public class PessoaService {
 
     @Autowired
     private ObjectMapper objectMapper;
+
+    @Autowired
+    private EmailService emailService;
 
     public PessoaService() {
 
@@ -58,7 +62,10 @@ public class PessoaService {
         Pessoa pessoaEntity = objectMapper.convertValue(pessoa, Pessoa.class);
         pessoaRepository.create(pessoaEntity);
         log.warn("Pessoa criada!");
-        return objectMapper.convertValue(pessoaEntity, PessoaDTO.class);
+        PessoaDTO pessoaDTO = objectMapper.convertValue(pessoaEntity, PessoaDTO.class);
+        String tipoDeMensagem = TipoDeMensagem.CREATE.getTipo();
+        emailService.sendEmail(pessoaDTO, tipoDeMensagem);
+        return pessoaDTO;
     }
 
     public PessoaDTO update(Integer idPessoa,
@@ -70,7 +77,10 @@ public class PessoaService {
         pessoaRecuperada.setNome(pessoaEntity.getNome());
         pessoaRecuperada.setDataNascimento(pessoaEntity.getDataNascimento());
         log.warn("Pessoa atualizada!");
-        return objectMapper.convertValue(pessoaRecuperada, PessoaDTO.class);
+        PessoaDTO pessoaDTO = objectMapper.convertValue(pessoaRecuperada, PessoaDTO.class);
+        String tipoDeMensagem = TipoDeMensagem.UPDATE.getTipo();
+        emailService.sendEmail(pessoaDTO, tipoDeMensagem);
+        return pessoaDTO;
     }
 
     public void delete(Integer id) throws RegraDeNegocioException {
@@ -78,6 +88,9 @@ public class PessoaService {
         Pessoa pessoaRecuperada = findByIdPessoa(id);
         pessoaRepository.list().remove(pessoaRecuperada);
         log.warn("Pessoa deletada!");
+        PessoaDTO pessoaDTO = objectMapper.convertValue(pessoaRecuperada, PessoaDTO.class);
+        String tipoDeMensagem = TipoDeMensagem.DELETE.getTipo();
+        emailService.sendEmail(pessoaDTO, tipoDeMensagem);
     }
 
     public Pessoa findByIdPessoa(Integer id) throws RegraDeNegocioException {

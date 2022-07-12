@@ -22,4 +22,7 @@ public class PessoaCreateDTO {
     @NotBlank
     private String cpf;
 
+    @NotBlank
+    private String email;
+
 }
