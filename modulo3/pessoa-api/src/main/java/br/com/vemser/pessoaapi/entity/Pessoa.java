@@ -1,9 +1,7 @@
 package br.com.vemser.pessoaapi.entity;
 
 import lombok.*;
-import org.hibernate.validator.constraints.br.CPF;
 
-import javax.validation.constraints.*;
 import java.time.LocalDate;
 
 
