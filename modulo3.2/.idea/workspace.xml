@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="afa858b8-d9c6-434a-a944-28c386f2e80f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../modulo3/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../modulo3/homework1_1.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../modulo3/homework1_2.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../modulo3/homework2.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../modulo3/homework3.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../modulo3/pessoa-api/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../modulo3/pessoa-api/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../modulo3/pessoa-api/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../modulo3/pessoa-api/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../modulo3/pessoa-api/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../modulo3/pessoa-api/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../modulo3/pessoa-api/src/main/java/br/com/vemser/pessoaapi/PessoaApiApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../modulo3/pessoa-api/src/main/java/br/com/vemser/pessoaapi/client/DadosPessoaisClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../modulo3/pessoa-api/src/main/java/br/com/vemser/pessoaapi/config/FeignConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../modulo3/pessoa-api/src/main/java/br/com/vemser/pessoaapi/config/OpenApiConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../modulo3/pessoa-api/src/main/java/br/com/vemser/pessoaapi/config/PropertieReader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../modulo3/pessoa-api/src/main/java/br/com/vemser/pessoaapi/config/SimpleErrorDecode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../modulo3/pessoa-api/src/main/java/br/com/vemser/pessoaapi/controller/ContatoController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../modulo3/pessoa-api/src/main/java/br/com/vemser/pessoaapi/controller/DadosPessoaisController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../modulo3/pessoa-api/src/main/java/br/com/vemser/pessoaapi/controller/EnderecoController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../modulo3/pessoa-api/src/main/java/br/com/vemser/pessoaapi/controller/PessoaController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../modulo3/pessoa-api/src/main/java/br/com/vemser/pessoaapi/dto/ContatoCreateDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../modulo3/pessoa-api/src/main/java/br/com/vemser/pessoaapi/dto/ContatoDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../modulo3/pessoa-api/src/main/java/br/com/vemser/pessoaapi/dto/DadosPessoaisDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../modulo3/pessoa-api/src/main/java/br/com/vemser/pessoaapi/dto/EnderecoCreateDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../modulo3/pessoa-api/src/main/java/br/com/vemser/pessoaapi/dto/EnderecoDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../modulo3/pessoa-api/src/main/java/br/com/vemser/pessoaapi/dto/PessoaCreateDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../modulo3/pessoa-api/src/main/java/br/com/vemser/pessoaapi/dto/PessoaDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../modulo3/pessoa-api/src/main/java/br/com/vemser/pessoaapi/entity/Contato.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../modulo3/pessoa-api/src/main/java/br/com/vemser/pessoaapi/entity/Endereco.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../modulo3/pessoa-api/src/main/java/br/com/vemser/pessoaapi/entity/Pessoa.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../modulo3/pessoa-api/src/main/java/br/com/vemser/pessoaapi/entity/Sexo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../modulo3/pessoa-api/src/main/java/br/com/vemser/pessoaapi/entity/TipoContato.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../modulo3/pessoa-api/src/main/java/br/com/vemser/pessoaapi/entity/TipoEndereco.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../modulo3/pessoa-api/src/main/java/br/com/vemser/pessoaapi/entity/TipoMensagem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../modulo3/pessoa-api/src/main/java/br/com/vemser/pessoaapi/exceptions/CustomGlobalExceptionHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../modulo3/pessoa-api/src/main/java/br/com/vemser/pessoaapi/exceptions/RegraDeNegocioException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../modulo3/pessoa-api/src/main/java/br/com/vemser/pessoaapi/repository/ContatoRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../modulo3/pessoa-api/src/main/java/br/com/vemser/pessoaapi/repository/EnderecoRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../modulo3/pessoa-api/src/main/java/br/com/vemser/pessoaapi/repository/PessoaRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../modulo3/pessoa-api/src/main/java/br/com/vemser/pessoaapi/service/ContatoService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../modulo3/pessoa-api/src/main/java/br/com/vemser/pessoaapi/service/DadosPessoaisService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../modulo3/pessoa-api/src/main/java/br/com/vemser/pessoaapi/service/EmailService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../modulo3/pessoa-api/src/main/java/br/com/vemser/pessoaapi/service/EnderecoService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../modulo3/pessoa-api/src/main/java/br/com/vemser/pessoaapi/service/PessoaService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../modulo3/pessoa-api/src/main/resources/application-prd.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../modulo3/pessoa-api/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../modulo3/pessoa-api/src/main/resources/templates/email-template-address-create.ftl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../modulo3/pessoa-api/src/main/resources/templates/email-template-address-delete.ftl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../modulo3/pessoa-api/src/main/resources/templates/email-template-address-update.ftl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../modulo3/pessoa-api/src/main/resources/templates/email-template-create.ftl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../modulo3/pessoa-api/src/main/resources/templates/email-template-delete.ftl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../modulo3/pessoa-api/src/main/resources/templates/email-template-update.ftl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../modulo3/pessoa-api/src/test/java/br/com/vemser/pessoaapi/PessoaApiApplicationTests.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2BnfTWZ9tejNQJPduqzHmM6zI6W" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/alyson.siqueira/Desktop/dbc-repos/vemser-backend/modulo3.2/pessoa-api",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Global Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "project.propVCSSupport.Mappings",
+    "spring.configuration.checksum": "3fb7f0f418bc86194a9b193ea09527db"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\alyson.siqueira\Desktop\dbc-repos\vemser-backend\modulo3\pessoa-api\src\main\resources\templates" />
+      <recent name="C:\Users\alyson.siqueira\Desktop\dbc-repos\vemser-backend\modulo3\pessoa-api\src\main\resources" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\alyson.siqueira\Desktop\dbc-repos\vemser-backend\modulo3\pessoa-api\src\main\java\br\com\vemser\pessoaapi\config" />
+      <recent name="C:\Users\alyson.siqueira\Desktop\dbc-repos\vemser-backend\modulo3\pessoa-api\src\main\java\br\com\vemser\pessoaapi\client" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="PessoaApiApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <option name="ACTIVE_PROFILES" />
+      <module name="modulo3.2" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="br.com.vemser.pessoaapi.PessoaApiApplication" />
+      <option name="VM_PARAMETERS" value="-Dspring.profiles.active -Dspring.mail.username=alyson.siqueira@dbccompany.com.br -Dspring.mail.password=hxtsfB@4" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="afa858b8-d9c6-434a-a944-28c386f2e80f" name="Changes" comment="" />
+      <created>1657546783371</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1657546783371</updated>
+      <workItem from="1657633363950" duration="192000" />
+      <workItem from="1657633688111" duration="588000" />
+      <workItem from="1657642460071" duration="13223000" />
+      <workItem from="1657664510916" duration="2934000" />
+      <workItem from="1657729745849" duration="13015000" />
+      <workItem from="1657748093431" duration="1909000" />
+      <workItem from="1657753308899" duration="10196000" />
+      <workItem from="1657791357265" duration="19360000" />
+      <workItem from="1657890905287" duration="52000" />
+      <workItem from="1658054036244" duration="4204000" />
+      <workItem from="1658172178076" duration="783000" />
+      <workItem from="1658226506615" duration="1531000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
