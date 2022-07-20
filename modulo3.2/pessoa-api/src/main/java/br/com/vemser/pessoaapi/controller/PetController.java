@@ -37,19 +37,6 @@ public class PetController {
         return new ResponseEntity<>(petService.list(), HttpStatus.OK);
     }
 
-    @Operation(summary = "Listar pets por identificação", description = "Lista o pet com base na sua identificação")
-    @ApiResponses(
-            value = {
-                    @ApiResponse(responseCode = "200", description = "Sucesso! Retorna o pet com base na sua identificação"),
-                    @ApiResponse(responseCode = "400", description = "Requisição inválida"),
-                    @ApiResponse(responseCode = "500", description = "Erro! Foi gerada uma exceção")
-            }
-    )
-    @GetMapping("/{idPet}") //localhost:8080/contato/{idContato}
-    public ResponseEntity<PetDTO> listById(@PathVariable("idPet") Integer idPet) throws RegraDeNegocioException {
-        return new ResponseEntity<>(petService.listById(idPet), HttpStatus.OK);
-    }
-
     @Operation(summary = "Adicionar pet", description = "Adiciona o pet no banco de dados")
     @ApiResponses(
             value = {

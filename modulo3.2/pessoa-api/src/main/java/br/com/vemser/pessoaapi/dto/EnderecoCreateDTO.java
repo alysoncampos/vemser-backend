@@ -10,9 +10,6 @@ import javax.validation.constraints.*;
 @Data
 public class EnderecoCreateDTO {
 
-//    @Schema(description = "Id da Pessoa")
-//    private Integer idPessoa;
-
     @Schema(description = "Tipo do Endereço")
     @NotNull(message = "Informe o tipo de Endereço")
     private TipoEndereco tipo;

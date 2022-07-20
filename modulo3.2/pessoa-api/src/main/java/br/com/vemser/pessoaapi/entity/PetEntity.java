@@ -17,6 +17,8 @@ import java.io.Serializable;
 @Entity(name = "PET")
 public class PetEntity implements Serializable {
 
+    private static final long serialVersionUUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PET_SEQ")
     @SequenceGenerator(name = "PET_SEQ", sequenceName = "seq_pet", allocationSize = 1)

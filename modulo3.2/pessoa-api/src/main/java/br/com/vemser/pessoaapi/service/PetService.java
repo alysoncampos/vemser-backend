@@ -1,5 +1,6 @@
 package br.com.vemser.pessoaapi.service;
 
+import br.com.vemser.pessoaapi.dto.PessoaDTO;
 import br.com.vemser.pessoaapi.dto.PetCreateDTO;
 import br.com.vemser.pessoaapi.dto.PetDTO;
 import br.com.vemser.pessoaapi.entity.PessoaEntity;
@@ -12,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -27,22 +27,17 @@ public class PetService {
     @Autowired
     private ObjectMapper objectMapper;
 
-
     public List<PetDTO> list() {
         log.info("Listando todos os pets");
 
         return petRepository.findAll().stream()
-                .map(petEntity -> convertToDTO(petEntity))
-                .collect(Collectors.toList());
+                .map(petEntity -> {
+                    PetDTO petDTO = convertToDTO(petEntity);
+                    petDTO.setPessoa(convertPessoaToDTO(petEntity.getPessoa()));
+                    return petDTO;
+                })
+                .toList();
     }
-
-    public PetDTO listById(Integer idPet) throws RegraDeNegocioException {
-        PetEntity pet = petRepository.findById(idPet)
-                .orElseThrow(() -> new RegraDeNegocioException("Pet não encontrado"));
-
-        return convertToDTO(pet);
-    }
-
 
     public PetDTO create(Integer idPessoa, PetCreateDTO petCreateDTO) throws RegraDeNegocioException {
         PessoaEntity pessoaEntity = pessoaService.findByIdPessoa(idPessoa);
@@ -99,5 +94,7 @@ public class PetService {
         return objectMapper.convertValue(petEntity, PetDTO.class);
     }
 
-
+    public PessoaDTO convertPessoaToDTO(PessoaEntity pessoaEntity) {
+        return objectMapper.convertValue(pessoaEntity, PessoaDTO.class);
+    }
 }
