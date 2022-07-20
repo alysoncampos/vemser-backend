@@ -14,11 +14,11 @@ public class ContatoEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CONTATO_SEQ")
-    @SequenceGenerator(name = "PESSOA_SEQ", sequenceName = "seq_contato", allocationSize = 1)
+    @SequenceGenerator(name = "CONTATO_SEQ", sequenceName = "seq_contato", allocationSize = 1)
     @Column(name = "id_contato")
     private Integer idContato;
 
-    @Column(name = "id_pessoa")
+    @Column(name = "id_pessoa", insertable = false, updatable = false)
     private Integer idPessoa;
 
     @Enumerated(EnumType.ORDINAL)
@@ -30,5 +30,9 @@ public class ContatoEntity {
 
     @Column(name = "descricao")
     private String descricao;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_pessoa", referencedColumnName = "id_pessoa")
+    private PessoaEntity pessoa;
 
 }

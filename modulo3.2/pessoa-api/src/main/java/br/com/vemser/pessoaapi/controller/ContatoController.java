@@ -106,6 +106,6 @@ public class ContatoController {
     @DeleteMapping("/{idContato}") //localhost:8080/contato/{idContato}
     public ResponseEntity<Void> delete(@PathVariable("idContato") Integer id) throws RegraDeNegocioException {
         contatoService.delete(id);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

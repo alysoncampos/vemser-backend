@@ -1,7 +1,6 @@
 package br.com.vemser.pessoaapi.controller;
 
-import br.com.vemser.pessoaapi.dto.PessoaCreateDTO;
-import br.com.vemser.pessoaapi.dto.PessoaDTO;
+import br.com.vemser.pessoaapi.dto.*;
 import br.com.vemser.pessoaapi.config.PropertieReader;
 import br.com.vemser.pessoaapi.exceptions.RegraDeNegocioException;
 import br.com.vemser.pessoaapi.service.EmailService;
@@ -81,9 +80,62 @@ public class PessoaController {
                     @ApiResponse(responseCode = "500", description = "Foi gerada uma exceção")
             }
     )
-    @GetMapping("/{nome}/byName")
-    public ResponseEntity<List<PessoaDTO>> listByName(@PathVariable("nome") String nome) throws RegraDeNegocioException {
-        return new ResponseEntity<>(pessoaService.listByName(nome), HttpStatus.OK);
+    @GetMapping("/by-name/{nome}")
+    public ResponseEntity<List<PessoaDTO>> findAllByNome(@PathVariable("nome") String nome) {
+        return new ResponseEntity<>(pessoaService.findAllByName(nome), HttpStatus.OK);
+    }
+
+    @Operation(summary = "listar pessoas com enderecos", description = "Lista pessoas do banco com seus endereços")
+    @ApiResponses(
+            value = {
+                    @ApiResponse(responseCode = "200", description = "Sucesso! Retorna Lista de pessoas com seus endereços"),
+                    @ApiResponse(responseCode = "400", description = "Requisição inválida"),
+                    @ApiResponse(responseCode = "500", description = "Erro! Foi gerada uma exceção")
+            }
+    )
+    @GetMapping("/listar-com-enderecos")
+    public ResponseEntity<List<PessoaEnderecoDTO>> listPessoaEnderecos(@RequestParam(required = false) Integer idPessoa) {
+        return new ResponseEntity<>(pessoaService.listPessoaEnderecos(idPessoa), HttpStatus.OK);
+    }
+
+    @Operation(summary = "listar pessoas com contatos", description = "Lista pessoas do banco com seus contatos")
+    @ApiResponses(
+            value = {
+                    @ApiResponse(responseCode = "200", description = "Sucesso! Retorna Lista de pessoas com seus contatos"),
+                    @ApiResponse(responseCode = "400", description = "Requisição inválida"),
+                    @ApiResponse(responseCode = "500", description = "Erro! Foi gerada uma exceção")
+            }
+    )
+    @GetMapping("/listar-com-contatos")
+    public ResponseEntity<List<PessoaContatoDTO>> listPessoaContatos(@RequestParam(required = false) Integer idPessoa) {
+        return new ResponseEntity<>(pessoaService.listPessoaContatos(idPessoa), HttpStatus.OK);
+    }
+
+
+    @Operation(summary = "listar pessoas com pets", description = "Lista pessoas do banco com seus pets")
+    @ApiResponses(
+            value = {
+                    @ApiResponse(responseCode = "200", description = "Sucesso! Retorna Lista de pessoas com seus pets"),
+                    @ApiResponse(responseCode = "400", description = "Requisição inválida"),
+                    @ApiResponse(responseCode = "500", description = "Erro! Foi gerada uma exceção")
+            }
+    )
+    @GetMapping("/listar-com-pets")
+    public ResponseEntity<List<PessoaPetDTO>> listPessoaPet(@RequestParam(required = false) Integer idPessoa) {
+        return new ResponseEntity<>(pessoaService.listPessoaPet(idPessoa), HttpStatus.OK);
+    }
+
+    @Operation(summary = "listar pessoas pelo cpf", description = "Lista pessoa do banco pelo cpf")
+    @ApiResponses(
+            value = {
+                    @ApiResponse(responseCode = "200", description = "Retorna pessoa pelo nome"),
+                    @ApiResponse(responseCode = "400", description = "Pessoa não encontrada"),
+                    @ApiResponse(responseCode = "500", description = "Foi gerada uma exceção")
+            }
+    )
+    @GetMapping("/by-cpf/{cpf}")
+    public ResponseEntity<PessoaDTO> findByCpf(@PathVariable("cpf") String cpf) {
+        return new ResponseEntity<>(pessoaService.findByCpf(cpf), HttpStatus.OK);
     }
 
     @Operation(summary = "adicionar pessoa", description = "Adiciona pessoa ao banco")
