@@ -46,7 +46,7 @@ public class PessoaController {
         return "Enviando um email...";
     }
 
-    @Operation(summary = "listar pessoas", description = "Lista todas as pessoas do banco")
+    @Operation(summary = "Listar pessoas", description = "Lista todas as pessoas do banco")
     @ApiResponses(
             value = {
                     @ApiResponse(responseCode = "200", description = "Retorna a lista de pessoas"),
@@ -59,7 +59,7 @@ public class PessoaController {
         return new ResponseEntity<>(pessoaService.list(), HttpStatus.OK);
     }
 
-    @Operation(summary = "listar pessoas por id", description = "Lista pessoa do banco por id")
+    @Operation(summary = "Listar pessoas por id", description = "Lista pessoa do banco por id")
     @ApiResponses(
             value = {
                     @ApiResponse(responseCode = "200", description = "Retorna pessoa por id"),
@@ -72,12 +72,12 @@ public class PessoaController {
         return new ResponseEntity<>(pessoaService.listByIdPessoa(id), HttpStatus.OK);
     }
 
-    @Operation(summary = "listar pessoas pelo nome", description = "Lista pessoa do banco pelo nome")
+    @Operation(summary = "Listar pessoas pelo nome", description = "Lista pessoa do banco pelo nome")
     @ApiResponses(
             value = {
-                    @ApiResponse(responseCode = "200", description = "Retorna pessoa pelo nome"),
+                    @ApiResponse(responseCode = "200", description = "Sucesso! Retorna pessoa pelo nome"),
                     @ApiResponse(responseCode = "400", description = "Pessoa não encontrada"),
-                    @ApiResponse(responseCode = "500", description = "Foi gerada uma exceção")
+                    @ApiResponse(responseCode = "500", description = "Erro! Foi gerada uma exceção")
             }
     )
     @GetMapping("/by-name/{nome}")
@@ -85,7 +85,7 @@ public class PessoaController {
         return new ResponseEntity<>(pessoaService.findAllByName(nome), HttpStatus.OK);
     }
 
-    @Operation(summary = "listar pessoas com enderecos", description = "Lista pessoas do banco com seus endereços")
+    @Operation(summary = "Listar pessoas com enderecos", description = "Lista pessoas do banco com seus endereços")
     @ApiResponses(
             value = {
                     @ApiResponse(responseCode = "200", description = "Sucesso! Retorna Lista de pessoas com seus endereços"),
@@ -98,7 +98,7 @@ public class PessoaController {
         return new ResponseEntity<>(pessoaService.listPessoaEnderecos(idPessoa), HttpStatus.OK);
     }
 
-    @Operation(summary = "listar pessoas com contatos", description = "Lista pessoas do banco com seus contatos")
+    @Operation(summary = "Listar pessoas com contatos", description = "Lista pessoas do banco com seus contatos")
     @ApiResponses(
             value = {
                     @ApiResponse(responseCode = "200", description = "Sucesso! Retorna Lista de pessoas com seus contatos"),
@@ -111,8 +111,7 @@ public class PessoaController {
         return new ResponseEntity<>(pessoaService.listPessoaContatos(idPessoa), HttpStatus.OK);
     }
 
-
-    @Operation(summary = "listar pessoas com pets", description = "Lista pessoas do banco com seus pets")
+    @Operation(summary = "Listar pessoas com pets", description = "Lista pessoas do banco com seus pets")
     @ApiResponses(
             value = {
                     @ApiResponse(responseCode = "200", description = "Sucesso! Retorna Lista de pessoas com seus pets"),
@@ -125,12 +124,25 @@ public class PessoaController {
         return new ResponseEntity<>(pessoaService.listPessoaPet(idPessoa), HttpStatus.OK);
     }
 
-    @Operation(summary = "listar pessoas pelo cpf", description = "Lista pessoa do banco pelo cpf")
+    @Operation(summary = "Listar pessoas completas", description = "Lista pessoas do banco com todos os dados")
     @ApiResponses(
             value = {
-                    @ApiResponse(responseCode = "200", description = "Retorna pessoa pelo nome"),
+                    @ApiResponse(responseCode = "200", description = "Sucesso! Retorna Lista de pessoas com todos os dados"),
+                    @ApiResponse(responseCode = "400", description = "Requisição inválida"),
+                    @ApiResponse(responseCode = "500", description = "Erro! Foi gerada uma exceção")
+            }
+    )
+    @GetMapping("/pessoa-completo")
+    public ResponseEntity<List<PessoaCompletoDTO>> listPessoaCompleto(@RequestParam(required = false) Integer idPessoa) {
+        return new ResponseEntity<>(pessoaService.listPessoaCompleto(idPessoa), HttpStatus.OK);
+    }
+
+    @Operation(summary = "Listar pessoas pelo cpf", description = "Lista pessoa do banco pelo cpf")
+    @ApiResponses(
+            value = {
+                    @ApiResponse(responseCode = "200", description = "Sucesso! Retorna pessoa pelo nome"),
                     @ApiResponse(responseCode = "400", description = "Pessoa não encontrada"),
-                    @ApiResponse(responseCode = "500", description = "Foi gerada uma exceção")
+                    @ApiResponse(responseCode = "500", description = "Erro! Foi gerada uma exceção")
             }
     )
     @GetMapping("/by-cpf/{cpf}")
@@ -138,12 +150,25 @@ public class PessoaController {
         return new ResponseEntity<>(pessoaService.findByCpf(cpf), HttpStatus.OK);
     }
 
-    @Operation(summary = "adicionar pessoa", description = "Adiciona pessoa ao banco")
+    @Operation(summary = "Listar relatório personalizado", description = "Lista relatório personalizado do banco")
     @ApiResponses(
             value = {
-                    @ApiResponse(responseCode = "201", description = "Cria uma pessoa"),
+                    @ApiResponse(responseCode = "200", description = "Sucesso! Retorna Relatório personalziado"),
                     @ApiResponse(responseCode = "400", description = "Requisição inválida"),
-                    @ApiResponse(responseCode = "500", description = "Foi gerada uma exceção")
+                    @ApiResponse(responseCode = "500", description = "Erro! Foi gerada uma exceção")
+            }
+    )
+    @GetMapping("/relatorio-personalizado")
+    public List<RelatorioPersonalizadoDTO> getRelatorioPersonalizado(@RequestParam(required = false) Integer idPessoa) {
+        return pessoaService.listRelatorioDTO(idPessoa);
+    }
+
+    @Operation(summary = "Adicionar pessoa", description = "Adiciona pessoa ao banco")
+    @ApiResponses(
+            value = {
+                    @ApiResponse(responseCode = "201", description = "Sucesso! Cria uma pessoa"),
+                    @ApiResponse(responseCode = "400", description = "Requisição inválida"),
+                    @ApiResponse(responseCode = "500", description = "Erro! Foi gerada uma exceção")
             }
     )
     @PostMapping
@@ -151,12 +176,12 @@ public class PessoaController {
         return new ResponseEntity<>(pessoaService.create(pessoa), HttpStatus.CREATED);
     }
 
-    @Operation(summary = "atualizar pessoa", description = "Atualiza pessoa do banco")
+    @Operation(summary = "Atualizar pessoa", description = "Atualiza pessoa do banco")
     @ApiResponses(
             value = {
-                    @ApiResponse(responseCode = "200", description = "Atualiza uma pessoa"),
+                    @ApiResponse(responseCode = "200", description = "Sucesso! Atualiza uma pessoa"),
                     @ApiResponse(responseCode = "400", description = "Pessoa não encontrada"),
-                    @ApiResponse(responseCode = "500", description = "Foi gerada uma exceção")
+                    @ApiResponse(responseCode = "500", description = "Erro! Foi gerada uma exceção")
             }
     )
     @PutMapping("/{idPessoa}")
@@ -165,12 +190,12 @@ public class PessoaController {
         return new ResponseEntity<>(pessoaService.update(id, pessoaAtualizar), HttpStatus.OK);
     }
 
-    @Operation(summary = "deletar pessoa", description = "Deleta pessoa do banco")
+    @Operation(summary = "Deletar pessoa", description = "Deleta pessoa do banco")
     @ApiResponses(
             value = {
-                    @ApiResponse(responseCode = "200", description = "Deleta uma pessoa"),
+                    @ApiResponse(responseCode = "200", description = "Sucesso! Deleta uma pessoa"),
                     @ApiResponse(responseCode = "400", description = "Pessoa não encontrada"),
-                    @ApiResponse(responseCode = "500", description = "Foi gerada uma exceção")
+                    @ApiResponse(responseCode = "500", description = "Erro! Foi gerada uma exceção")
             }
     )
     @DeleteMapping("/{idPessoa}")

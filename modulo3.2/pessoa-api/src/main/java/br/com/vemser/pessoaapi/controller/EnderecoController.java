@@ -2,7 +2,9 @@ package br.com.vemser.pessoaapi.controller;
 
 import br.com.vemser.pessoaapi.dto.EnderecoCreateDTO;
 import br.com.vemser.pessoaapi.dto.EnderecoDTO;
+import br.com.vemser.pessoaapi.entity.EnderecoEntity;
 import br.com.vemser.pessoaapi.exceptions.RegraDeNegocioException;
+import br.com.vemser.pessoaapi.repository.EnderecoRepository;
 import br.com.vemser.pessoaapi.service.EnderecoService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -23,6 +25,9 @@ public class EnderecoController {
 
     @Autowired
     private EnderecoService enderecoService;
+
+    @Autowired
+    private EnderecoRepository enderecoRepository;
 
     public EnderecoController() {
 
@@ -62,9 +67,10 @@ public class EnderecoController {
                     @ApiResponse(responseCode = "500", description = "Foi gerada uma exceção")
             }
     )
-    @PostMapping
-    public ResponseEntity<EnderecoDTO> create(@RequestBody @Valid EnderecoCreateDTO endereco) throws RegraDeNegocioException {
-        return new ResponseEntity<>(enderecoService.create(endereco), HttpStatus.CREATED);
+    @PostMapping("/{idPessoa}")
+    public ResponseEntity<EnderecoDTO> create(@PathVariable("idPessoa") Integer idPessoa,
+                                              @RequestBody @Valid EnderecoCreateDTO endereco) throws RegraDeNegocioException {
+        return new ResponseEntity<>(enderecoService.create(idPessoa, endereco), HttpStatus.CREATED);
     }
 
     @Operation(summary = "atualizar endereço", description = "Atualiza endereço do banco por id do endereço")
@@ -93,5 +99,10 @@ public class EnderecoController {
     public ResponseEntity<Void> delete(@PathVariable("idEndereco") Integer id) throws RegraDeNegocioException {
         enderecoService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/endereco-por-pais")
+    public List<EnderecoEntity> getEnderecosByPais(String pais) {
+        return enderecoRepository.listEnderecosByPais(pais);
     }
 }

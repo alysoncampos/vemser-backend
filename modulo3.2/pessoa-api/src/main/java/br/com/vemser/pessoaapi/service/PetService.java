@@ -45,6 +45,7 @@ public class PetService {
 
         PetEntity petEntity = convertToEntity(petCreateDTO);
         petEntity.setPessoa(pessoaEntity);
+
         petRepository.save(petEntity);
 
         log.info("Pet adicionado!");
@@ -59,6 +60,9 @@ public class PetService {
 
         PetEntity petEntity = findByIdPet(idPet);
 
+        PessoaEntity pessoa = petEntity.getPessoa();
+        pessoa.setPet(null);
+
         PessoaEntity pessoaEntity = pessoaService.findByIdPessoa(petDTO.getPessoa().getIdPessoa());
 
         log.info("Atualizando pet");
@@ -66,6 +70,13 @@ public class PetService {
         petEntity.setPessoa(pessoaEntity);
         petEntity.setNome(petDTO.getNome());
         petEntity.setTipo(petDTO.getTipo());
+        pessoaEntity.setPet(petEntity);
+
+        pessoaService.salvar(pessoaEntity);
+
+        if(!pessoaEntity.getIdPessoa().equals(pessoa.getIdPessoa())){
+            pessoaService.salvar(pessoa);
+        }
 
         petRepository.save(petEntity);
 

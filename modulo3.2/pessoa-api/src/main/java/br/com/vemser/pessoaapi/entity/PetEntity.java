@@ -25,6 +25,8 @@ public class PetEntity implements Serializable {
     @Column(name = "id_pet")
     private Integer idPet;
 
+    //private Integer idPessoa;
+
     @Column(name = "nome")
     private String nome;
 

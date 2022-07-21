@@ -12,4 +12,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Repository
 public interface ContatoRepository extends JpaRepository<ContatoEntity, Integer> {
 
+
+
 }
